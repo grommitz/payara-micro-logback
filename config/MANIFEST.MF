@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: fish.payara.micro
+Main-Class: fish.payara.micro.PayaraMicro
+Start-Class: fish.payara.micro.impl.PayaraMicroImpl
+Class-Path: libs/jul-to-slf4j.jar libs/log4j-slf4j-impl.jar libs/log4j-api.jar libs/log4j-core.jar libs/slf4j-api.jar
