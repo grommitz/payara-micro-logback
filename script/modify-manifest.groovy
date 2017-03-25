@@ -3,8 +3,8 @@ def manifest = payaraMicroRootPath.resolve('META-INF/MANIFEST.MF').toFile()
 
 // extract manifest content
 def manifestContents = []
-manifest.eachLine { line ->
-    manifestContents << line
+manifest.eachLine {
+    manifestContents << it
 }
 
 // remove the misleading content from manifest
@@ -17,6 +17,6 @@ manifestContents = manifestContents.findAll { !it.trim().isEmpty() }
 def classPathDependencies = payaraMicroRootPath.resolve('libs').toFile().list().collect { "libs/$it" }.join(' ')
 manifestContents << 'Class-Path: ' + classPathDependencies
 
-def writer = new PrintWriter(manifest)
-manifestContents.each { line -> writer.println(line) }
-writer.close()
+manifest.withWriter('utf-8') {
+    it.println(manifestContents.join('\n'))
+}
