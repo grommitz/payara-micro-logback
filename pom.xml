@@ -23,6 +23,7 @@
         <!-- maven plugin -->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.0.0</maven-dependency-plugin.version>
+        <groovy-maven-plugin.version>2.0</groovy-maven-plugin.version>
         <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
     </properties>
 
@@ -154,6 +155,23 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>${groovy-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>modify-manifest</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>${project.basedir}/script/modify-manifest.groovy</source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
@@ -170,8 +188,7 @@
                     <arguments>
                         <argument>cfm</argument>
                         <argument>payara-micro.jar</argument>
-                        <!-- The MANIFEST.MF is copied inside the payara-micro.jar -->
-                        <argument>${project.basedir}/config/MANIFEST.MF</argument>
+                        <argument>${project.build.directory}/payara-micro/META-INF/MANIFEST.MF</argument>
                         <argument>.</argument>
                     </arguments>
                 </configuration>
