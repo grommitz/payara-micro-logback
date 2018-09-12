@@ -17,7 +17,7 @@ In order to use logback as the default logger in payara micro, we need to
 
 ### How it works
 
-- Unpacks the payara-micro jar and adds the 4 logging libraries into the libs folder.
+- Unpacks the payara-micro jar and adds the 4 logging libraries into the MICRO-INF/lib folder.
 - Adds a Class-Path entry in the MANIFEST.MF for the added libraries
 - Repackages payara-micro.jar, now ready for an app which uses Logback.
  
@@ -44,7 +44,7 @@ config file itself.
 
 Then you would see the log message has prefix "[logback] - "  
 And execute
->$ curl http://localhost:8080/payara-micro-logback/test  
+>$ curl http://localhost:8080/testapp/test  
 
 to verify the application is deployed successfully.
 
