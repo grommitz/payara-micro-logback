@@ -14,7 +14,7 @@ manifestContents = manifestContents.findAll { !it.startsWith('Ant-Version') }
 manifestContents = manifestContents.findAll { !it.trim().isEmpty() }
 
 // append the Class-Path
-def classPathDependencies = payaraMicroRootPath.resolve('MICRO-INF/lib').toFile().list().collect { "MICRO-INF/lib/$it" }.join(' ')
+def classPathDependencies = payaraMicroRootPath.resolve('libs').toFile().list().collect { "libs/$it" }.join(' ')
 manifestContents << 'Class-Path: ' + classPathDependencies
 
 manifest.withWriter('utf-8') {

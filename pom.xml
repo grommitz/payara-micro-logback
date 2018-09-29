@@ -72,6 +72,12 @@
 
     <build>
         <finalName>testapp</finalName>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -137,7 +143,7 @@
                                     <destFileName>slf4j-api-${slf4j.version}.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
-                            <outputDirectory>${project.build.directory}/payara-micro/MICRO-INF/lib</outputDirectory>
+                            <outputDirectory>${project.build.directory}/payara-micro/libs</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -175,7 +181,7 @@
                     <executable>jar</executable>
                     <arguments>
                         <argument>cfm</argument>
-                        <argument>payara-micro-${payara.version}-logback.jar</argument>
+                        <argument>payara-micro-logback-${payara.version}.jar</argument>
                         <argument>${project.build.directory}/payara-micro/META-INF/MANIFEST.MF</argument>
                         <argument>.</argument>
                     </arguments>

@@ -4,8 +4,10 @@
 
 java \
     -Dlogback.configurationFile=./config/logback.xml \
-    -jar target/payara-micro/payara-micro-5.183-logback.jar \
+    -jar ./payara-micro-logback-5.183.jar \
+        --addLibs ./libs/ \
         --logProperties ./config/logging.properties \
-        --deploy target/testapp.war \
         --port 7077 \
         --sslPort 7078
+
+#--deploy target/testapp.war \
