@@ -2,3 +2,4 @@
 *.iml
 target/
 docker/payara-micro-logback.jar
+docker/libs/

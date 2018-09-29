@@ -49,6 +49,7 @@ echo
 echo "Building...."
 
 JAR=../target/payara-micro/$APP-$PAYARA_VER.jar
+LIBS=../target/payara-micro/libs/*
 
 if [ ! -e "$JAR" ]; then
     echo "$JAR does not exist: build the project with maven before building the docker image"
@@ -56,6 +57,9 @@ if [ ! -e "$JAR" ]; then
 fi
 
 cp ${JAR} ./payara-micro-logback.jar || { echo "Missing artifact file ${JAR}"; exit 1; }
+rm -rf libs
+mkdir libs
+cp ${LIBS} ./libs
 
 echo "Building the docker image..."
 docker build --build-arg PAYARA_VER=$PAYARA_VER -t ${REG}/${IMAGE_NAME}:${IMAGE_VER} . || { echo "Failed to build image."; exit 1; }
