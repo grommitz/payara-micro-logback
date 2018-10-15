@@ -1,6 +1,6 @@
 ## payara-micro-logback
 
-Demo of how to modify payara-micro to support an app which uses slf4j+logback for its logging framework
+Builds an enhanced version of payara/micro to support an app which uses slf4j+logback for its logging framework
 instead of the default JUL.
 
 ### Abstract
